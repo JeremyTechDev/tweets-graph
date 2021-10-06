@@ -1,3 +1,4 @@
+import data from './data.json';
 import { useEffect, useState } from 'react';
 
 import './index.scss';
@@ -38,7 +39,7 @@ const getMaxAndMinCount = (tweetsData: TweetsData) => {
 };
 
 const TweetsGraph = () => {
-  const [data, setData] = useState<TweetsData | null>(null);
+  const { max, min } = getMaxAndMinCount(data);
 
   return (
     <section className="tweets-container">
@@ -47,7 +48,7 @@ const TweetsGraph = () => {
       </div>
 
       <div className="tweets-graph">
-        {data?.data.map((item) => {
+        {data.data.map((item) => {
           const KEY = `${item.start}-${item.end}`;
           const modifier = getModifier(max, min, item.tweet_count);
 

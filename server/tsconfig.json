@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "../dist/server",
+    "rootDir": "./",
+    "sourceMap": false,
+    "strict": true,
+    "removeComments": true,
+    "noEmitOnError": false,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noEmit": false,
+    "typeRoots": ["@types", "../node_modules/@types"]
+  }
+}

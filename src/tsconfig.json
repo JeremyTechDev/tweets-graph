@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "outDir": "./dist/client",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -19,8 +16,5 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
-  },
-  "include": [
-    "src"
-  ]
+  }
 }
