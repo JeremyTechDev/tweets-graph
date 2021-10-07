@@ -12,32 +12,34 @@
   grid-column-gap: 3px;
   grid-row-gap: 3px;
   grid-template-columns: repeat(24, 25px);
-  grid-template-rows: repeat(8, 25px);
+  grid-template-rows: repeat(7, 25px);
   margin: 10px 0;
 }
 
 .graph__item {
+  -webkit-transition: opacity 1s ease-in-out;
+  background-color: rgb(29, 161, 242);
   border-radius: 2px;
   height: 100%;
   text-align: center;
+  transition: opacity 0.5s ease-in-out;
   width: 100%;
 }
 
 .graph__item--none {
-  border: 1px solid #a0aca0;
-  box-sizing: border-box;
+  opacity: 0;
 }
 
 .graph__item--light {
-  background-color: rgba(29, 161, 242, 0.35);
+  opacity: 0.35;
 }
 
 .graph__item--medium {
-  background-color: rgba(29, 161, 242, 0.65);
+  opacity: 0.65;
 }
 
 .graph__item--full {
-  background-color: rgba(29, 161, 242, 1);
+  opacity: 1;
 }
 
 .footer,

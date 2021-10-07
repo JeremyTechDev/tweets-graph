@@ -25,7 +25,11 @@ const getMaxAndMinCount = (tweetsData: TweetsData) => {
   return { min, max };
 };
 
-const TweetsGraph: FC<{ tweetsData: TweetsData }> = ({ tweetsData }) => {
+interface Props {
+  tweetsData: TweetsData;
+}
+
+const TweetsGraph: FC<Props> = ({ tweetsData }) => {
   const { max, min } = getMaxAndMinCount(tweetsData);
 
   return (
