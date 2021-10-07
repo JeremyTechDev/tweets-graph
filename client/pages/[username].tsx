@@ -1,45 +1,47 @@
 import { NextPage, NextPageContext } from 'next';
+import Footer from '../components/Footer';
+import Input from '../components/Input';
+import Logo from '../components/Logo';
 import TweetsGraph from '../components/TweetsGraph';
 
 import styles from '../styles/GraphPage.module.css';
 
 interface Props {
-  tweetsData: TweetsData;
-  userData: {
-    username: string;
-  };
+  tweetsData: TweetsData | null;
+  username: string;
 }
 
-const GraphPage: NextPage<Props> = ({ tweetsData }) => {
+const GraphPage: NextPage<Props> = ({ tweetsData, username }) => {
   return (
     <main className={styles.container}>
-      <span />
+      <Logo />
 
-      <TweetsGraph tweetsData={tweetsData} />
+      <Input defaultValue={username} />
 
-      <footer className={styles.footer}>
-        Crafted with ♥️ by{' '}
-        <a
-          className={styles.footer__link}
-          href="https://twitter.com/AskJere"
-          target="_blank"
-        >
-          @AskJere
-        </a>
-      </footer>
+      {tweetsData ? (
+        <TweetsGraph tweetsData={tweetsData} username={username} />
+      ) : (
+        <p className={styles.not_found}>No data found for @{username} ☹️ Try someone else</p>
+      )}
+
+      <Footer />
     </main>
   );
 };
 
 export const getServerSideProps = async ({ query }: NextPageContext) => {
   const username = query.username || '';
-  const userData = { username };
 
-  const res = await fetch(`http://localhost:5000/api/twitter/count/${username}`);
-  console.log(res);
-  const data = await res.json();
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/twitter/count/${username}`,
+    );
+    const data = await res.json();
 
-  return { props: { tweetsData: data, userData } };
+    return { props: { tweetsData: data, username } };
+  } catch (error) {
+    return { props: { tweetsData: null, username } };
+  }
 };
 
 export default GraphPage;

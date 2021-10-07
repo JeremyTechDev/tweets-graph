@@ -14,3 +14,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.hidden {
+  position: absolute;
+  opacity: 0;
+  z-index: -1000;
+  white-space: pre;
+}

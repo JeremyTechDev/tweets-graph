@@ -1,0 +1,22 @@
+.input__container {
+}
+
+.input__text {
+  font-size: 3rem;
+}
+
+.input {
+  background: none;
+  border: none;
+  border-bottom: 3px solid #08a0e9;
+  border-radius: 2px;
+  color: rgba(29, 161, 242, 1);
+  font-size: 3rem;
+  outline: none;
+  text-align: center;
+  width: auto;
+}
+
+.highlighted {
+  color: #08a0e9;
+}

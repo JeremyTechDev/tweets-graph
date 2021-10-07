@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.not_found {
+  font-size: 2rem;
+}
+
 .footer {
   margin-bottom: 1rem;
   color: white;

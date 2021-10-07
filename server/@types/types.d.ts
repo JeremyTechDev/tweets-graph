@@ -6,7 +6,5 @@ interface TweetsData {
   }[];
   meta: {
     total_tweet_count: number;
-    max: number;
-    min: number;
   };
 }
