@@ -1,9 +1,7 @@
-import { NextPage } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import TweetsGraph from '../components/TweetsGraph';
 
 import styles from '../styles/GraphPage.module.css';
-
-import data from '../../../data.json';
 
 interface Props {
   tweetsData: TweetsData;
@@ -33,11 +31,15 @@ const GraphPage: NextPage<Props> = ({ tweetsData }) => {
   );
 };
 
-export const getServerSideProps = () => {
-  const tweetsData = data;
-  const userData = { username: 'AskJere' };
+export const getServerSideProps = async ({ query }: NextPageContext) => {
+  const username = query.username || '';
+  const userData = { username };
 
-  return { props: { tweetsData, userData } };
+  const res = await fetch(`http://localhost:5000/api/twitter/count/${username}`);
+  console.log(res);
+  const data = await res.json();
+
+  return { props: { tweetsData: data, userData } };
 };
 
 export default GraphPage;

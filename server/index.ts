@@ -1,6 +1,7 @@
+require('dotenv').config();
 import next from 'next';
 import express from 'express';
-require('dotenv').config();
+import twitterRoutes from './routes/twitter';
 
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -27,7 +28,7 @@ const initServer = (appHandler: any) => {
   }
 
   // apply routes
-  // server.use('/api/twitter/count');
+  server.use('/api/twitter', twitterRoutes);
 
   // let next handle the default route
   if (appHandler) {
