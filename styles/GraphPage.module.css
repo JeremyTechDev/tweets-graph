@@ -1,0 +1,23 @@
+.container {
+  background-color: #3a5e78;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: space-between;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.footer {
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.footer__link {
+  color: rgba(29, 161, 242, 1);
+}
+
+.footer__link:hover,
+.footer__link:active {
+  text-decoration: underline;
+}
