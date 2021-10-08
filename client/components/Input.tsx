@@ -11,9 +11,11 @@ import styles from '../styles/Input.module.css';
 
 interface Props {
   defaultValue?: string;
+  beforeText?: string;
+  afterText?: string;
 }
 
-const Input: FC<Props> = ({ defaultValue = '' }) => {
+const Input: FC<Props> = ({ beforeText, afterText, defaultValue = '' }) => {
   const [value, setValue] = useState(defaultValue);
   const [width, setWidth] = useState(0);
   const inputRef = useRef<HTMLSpanElement>(null);
@@ -35,22 +37,22 @@ const Input: FC<Props> = ({ defaultValue = '' }) => {
   return (
     <section className={styles.input__container}>
       <span className={styles.input__text}>
-        You are looking at <span className={styles.highlighted}>@</span>
+        {beforeText || 'You are looking at'}{' '}
+        <span className={styles.highlighted}>@</span>
       </span>
 
       <span ref={inputRef} className={`hidden ${styles.input__text}`}>
         {value}
       </span>
       <input
+        className={styles.input}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
         style={{ width }}
         value={value}
-        onKeyPress={handleKeyPress}
-        onChange={handleChange}
-        className={styles.input}
-        autoFocus
       />
 
-      <span className={styles.input__text}>'s activity</span>
+      <span className={styles.input__text}>{afterText ?? "'s activity"}</span>
     </section>
   );
 };

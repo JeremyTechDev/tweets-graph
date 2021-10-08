@@ -2,13 +2,14 @@
   background-color: #3a5e78;
   align-items: center;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: space-between;
   width: 100vw;
   flex-direction: column;
 }
 
 .logo__container {
+  margin-top: 1rem;
   display: flex;
   align-items: center;
 }
@@ -42,6 +43,13 @@
   margin-top: -1rem;
 }
 
+.section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
 .footer {
   margin-bottom: 1rem;
   color: white;
@@ -54,4 +62,13 @@
 .footer__link:hover,
 .footer__link:active {
   text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .heading {
+    line-height: 5.5rem;
+  }
+  .subheading {
+    margin-top: 1.5rem;
+  }
 }

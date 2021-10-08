@@ -1,5 +1,6 @@
 import ExhibitionGraph from '../components/ExhibitionGraph';
 import Footer from '../components/Footer';
+import Input from '../components/Input';
 import Logo from '../components/Logo';
 
 import styles from '../styles/Home.module.css';
@@ -16,7 +17,15 @@ const Home = () => {
         </h3>
       </div>
 
-      <ExhibitionGraph />
+      <div className={styles.section}>
+        <Input
+          beforeText="Enter your Twitter"
+          defaultValue="{username}"
+          afterText=" to check yours!"
+        />
+
+        <ExhibitionGraph />
+      </div>
 
       <Footer />
     </main>

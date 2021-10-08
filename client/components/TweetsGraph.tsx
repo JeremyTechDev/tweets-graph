@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import styles from '../styles/TweetsGraph.module.css';
 
@@ -20,6 +21,12 @@ const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
   return (
     <section className={styles.container}>
       <div className={styles.header}>
+        <span>
+          {tweetsData.meta.total_tweet_count} tweets between{' '}
+          {tweetsData.data[0].date} and{' '}
+          {tweetsData.data[tweetsData.data.length - 1].date}{' '}
+        </span>
+
         <a
           className={styles['profile-link']}
           href={`https://twitter.com/${username}`}
@@ -39,12 +46,27 @@ const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
           );
 
           return (
-            <span
-              key={KEY}
-              className={`${styles.graph__item} ${
-                styles['graph__item--' + modifier]
-              }`}
-            />
+            <Fragment key={KEY}>
+              <span
+                data-tip
+                data-for={KEY}
+                className={`${styles.graph__item} ${
+                  styles['graph__item--' + modifier]
+                }`}
+              />
+
+              <ReactTooltip id={KEY} type="light" effect="solid">
+                <h3>
+                  {item.tweet_count}{' '}
+                  {item.tweet_count === 1 ? 'tweet' : 'tweets'}
+                </h3>
+                <p>
+                  {item.date}
+                  <br />
+                  {item.startTime} - {item.endTime}
+                </p>
+              </ReactTooltip>
+            </Fragment>
           );
         })}
       </div>

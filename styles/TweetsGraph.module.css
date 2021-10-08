@@ -18,7 +18,7 @@
 
 .graph__item {
   -webkit-transition: opacity 1s ease-in-out;
-  background-color: rgb(29, 161, 242);
+  background-color: #08a0e9;
   border-radius: 2px;
   height: 100%;
   text-align: center;
@@ -42,16 +42,26 @@
   opacity: 1;
 }
 
-.footer,
 .header {
-  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header .profile-link {
   cursor: pointer;
+  font-size: 1.5rem;
+  color: #08a0e9;
 }
 
 .header .profile-link:hover,
 .header .profile-link:active {
   text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .graph {
+    grid-template-columns: repeat(24, 13px);
+    grid-template-rows: repeat(7, 13px);
+  }
 }
