@@ -36,7 +36,9 @@
     "tsc:server": "tsc -p ./server",
     "tsc:w:client": "tsc -p ./client -w",
     "tsc:w:server": "tsc -p ./server -w",
-    "copy-files": "cp -vr ./static/. dist/client/public/ && cp -vr ./styles/ dist/client/styles/"
+    "copy-files": "cp -vr ./static/. dist/client/public/ && cp -vr ./styles/ dist/client/styles/",
+    "postinstall": "yarn tsc",
+    "heroku-postbuild": "run-s copy-files build"
   },
   "eslintConfig": {
     "extends": [
