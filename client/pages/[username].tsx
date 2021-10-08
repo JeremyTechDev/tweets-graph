@@ -21,7 +21,9 @@ const GraphPage: NextPage<Props> = ({ tweetsData, username }) => {
       {tweetsData ? (
         <TweetsGraph tweetsData={tweetsData} username={username} />
       ) : (
-        <p className={styles.not_found}>No data found for @{username} ☹️ Try someone else</p>
+        <p className={styles.not_found}>
+          No data found for @{username} ☹️ Try someone else
+        </p>
       )}
 
       <Footer />
@@ -31,11 +33,13 @@ const GraphPage: NextPage<Props> = ({ tweetsData, username }) => {
 
 export const getServerSideProps = async ({ query }: NextPageContext) => {
   const username = query.username || '';
+  const BASE_URL =
+    process.env.ENV === 'production'
+      ? process.env.PRODUCTION_URL
+      : 'http://localhost:' + process.env.PORT;
 
   try {
-    const res = await fetch(
-      `http://localhost:5000/api/twitter/count/${username}`,
-    );
+    const res = await fetch(`${BASE_URL}/api/twitter/count/${username}`);
     const data = await res.json();
 
     return { props: { tweetsData: data, username } };
