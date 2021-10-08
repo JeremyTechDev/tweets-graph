@@ -1,5 +1,6 @@
 import { FC, Fragment } from 'react';
 import ReactTooltip from 'react-tooltip';
+import parseDate from '../helpers/parseDate';
 
 import styles from '../styles/TweetsGraph.module.css';
 
@@ -18,13 +19,16 @@ interface Props {
 }
 
 const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
+  const first = tweetsData.data[0];
+  const last = tweetsData.data[tweetsData.data.length];
+
   return (
     <section className={styles.container}>
       <div className={styles.header}>
         <span>
           {tweetsData.meta.total_tweet_count} tweets between{' '}
-          {tweetsData.data[0].date} and{' '}
-          {tweetsData.data[tweetsData.data.length - 1].date}{' '}
+          {parseDate(first.start).time} and{' '}
+          {parseDate(last.end).time}
         </span>
 
         <a
@@ -44,6 +48,8 @@ const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
             tweetsData.meta.min,
             item.tweet_count,
           );
+          const startTime = parseDate(item.start);
+          const endTime = parseDate(item.end);
 
           return (
             <Fragment key={KEY}>
@@ -61,9 +67,9 @@ const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
                   {item.tweet_count === 1 ? 'tweet' : 'tweets'}
                 </h3>
                 <p>
-                  {item.date}
+                  {startTime.date}
                   <br />
-                  {item.startTime} - {item.endTime}
+                  {startTime.time} - {endTime.time}
                 </p>
               </ReactTooltip>
             </Fragment>

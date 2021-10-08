@@ -24,7 +24,7 @@
 }
 
 .logo__title {
-  color: white;
+  color: #e1e8ed;
   font-size: 1.3rem;
 }
 
@@ -51,8 +51,11 @@
 }
 
 .footer {
+  align-items: center;
+  color: #e1e8ed;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 1rem;
-  color: white;
 }
 
 .footer__link {

@@ -2,13 +2,12 @@ import styles from '../styles/Home.module.css';
 
 const Footer = () => (
   <footer className={styles.footer}>
-    Crafted with ♥️ by{' '}
+    Crafted with ♥️ by Jeremy
     <a
-      className={styles.footer__link}
-      href="https://twitter.com/AskJere"
-      target="_blank"
+      href="https://twitter.com/AskJere?ref_src=twsrc%5Etfw"
+      className="twitter-follow-button"
     >
-      @AskJere
+      Follow @AskJere
     </a>
   </footer>
 );
