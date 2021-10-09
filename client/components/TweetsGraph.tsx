@@ -1,6 +1,7 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useCallback, useRef } from 'react';
 import ReactTooltip from 'react-tooltip';
 import parseDate from '../helpers/parseDate';
+import { toPng } from 'html-to-image';
 
 import styles from '../styles/TweetsGraph.module.css';
 
@@ -19,24 +20,51 @@ interface Props {
 }
 
 const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
+  const graphRef = useRef<HTMLDivElement>(null);
   const first = tweetsData.data[0];
-  const last = tweetsData.data[tweetsData.data.length];
+  const last = tweetsData.data[tweetsData.data.length - 1];
+
+  const filter = (node: HTMLElement) => {
+    const exclusionClasses = ['exclude-from-image'];
+    return !exclusionClasses.some((className) =>
+      node?.classList?.contains(className),
+    );
+  };
+
+  const handleDownload = useCallback(() => {
+    if (graphRef.current === null) {
+      return;
+    }
+
+    toPng(graphRef.current, { cacheBust: true, filter })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = `${username}-tweets-graph.png`;
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch(() => alert('Ops, I cannot do that for you right now 😬'));
+  }, [graphRef]);
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} ref={graphRef}>
+      <h2>@{username}'s Tweets Calendar Graph</h2>
+
       <div className={styles.header}>
         <span>
-          {tweetsData.meta.total_tweet_count} tweets between{' '}
-          {parseDate(first.start).time} and{' '}
-          {parseDate(last.end).time}
+          {tweetsData.meta.total_tweet_count} tweets{' '}
+          <span className="hide-on-mobile">
+            between {parseDate(first.start).date} and {parseDate(last.end).date}
+          </span>
         </span>
 
         <a
-          className={styles['profile-link']}
-          href={`https://twitter.com/${username}`}
-          target="_blank"
+          href={`https://twitter.com/${username}?ref_src=twsrc%5Etfw`}
+          className="twitter-follow-button exclude-from-image"
+          data-show-count="false"
+          data-size="large"
         >
-          @{username}
+          Follow @{username}
         </a>
       </div>
 
@@ -76,6 +104,13 @@ const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
           );
         })}
       </div>
+
+      <p
+        className={`exclude-from-image ${styles.download}`}
+        onClick={handleDownload}
+      >
+        Download
+      </p>
     </section>
   );
 };

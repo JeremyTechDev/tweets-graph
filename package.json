@@ -10,8 +10,8 @@
     "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "html-to-image": "^1.8.5",
     "next": "^11.1.2",
-    "node-sass": "5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-tooltip": "^4.2.21"

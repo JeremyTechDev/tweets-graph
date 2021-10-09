@@ -3,7 +3,7 @@
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  padding: 20px 30px;
+  padding: 0px 30px;
   color: #e1e8ed;
 }
 
@@ -56,6 +56,17 @@
 
 .header .profile-link:hover,
 .header .profile-link:active {
+  text-decoration: underline;
+}
+
+.download {
+  align-self: flex-end;
+  color: grey;
+  cursor: pointer;
+}
+
+.download:hover,
+.download:active {
   text-decoration: underline;
 }
 

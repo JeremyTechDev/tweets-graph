@@ -21,3 +21,9 @@ a {
   z-index: -1000;
   white-space: pre;
 }
+
+@media (max-width: 900px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}

@@ -22,6 +22,7 @@ router.get('/count/:username', async (req, res) => {
     );
 
     const data = await response.json();
+    data.data = data.data.splice(0, 7 * 24); // Only take the last seven full days
     data.meta = { ...data.meta, ...getMaxAndMinCount(data) };
 
     res.send(data);
