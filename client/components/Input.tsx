@@ -1,28 +1,22 @@
 import router from 'next/router';
-import {
-  ChangeEvent,
-  FC,
-  KeyboardEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { ChangeEvent, FC, KeyboardEvent, useState } from 'react';
+import InputAutoSize from 'react-input-autosize';
 import styles from '../styles/Input.module.css';
 
 interface Props {
-  defaultValue?: string;
+  placeholder?: string;
   beforeText?: string;
   afterText?: string;
+  defaultValue?: string;
 }
 
-const Input: FC<Props> = ({ beforeText, afterText, defaultValue = '' }) => {
+const Input: FC<Props> = ({
+  afterText,
+  beforeText,
+  placeholder,
+  defaultValue = '',
+}) => {
   const [value, setValue] = useState(defaultValue);
-  const [width, setWidth] = useState(0);
-  const inputRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    setWidth((inputRef.current?.offsetWidth || 0) + 15);
-  }, [value]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -41,15 +35,12 @@ const Input: FC<Props> = ({ beforeText, afterText, defaultValue = '' }) => {
         <span className={styles.highlighted}>@</span>
       </span>
 
-      <span ref={inputRef} className={`hidden ${styles.input__text}`}>
-        {value}
-      </span>
-      <input
-        autoComplete="new-password"
-        className={styles.input}
+      <InputAutoSize
+        autoComplete="off"
+        inputClassName={styles.input}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
-        style={{ width }}
+        placeholder={placeholder}
         value={value}
       />
 

@@ -18,10 +18,11 @@ const Home = () => {
       </div>
 
       <div className={styles.section}>
+        <input type="hidden" />
         <Input
-          beforeText="Enter your Twitter"
-          defaultValue="{username}"
           afterText=" to check yours!"
+          beforeText="Enter your Twitter"
+          placeholder="{username}"
         />
 
         <ExhibitionGraph />
