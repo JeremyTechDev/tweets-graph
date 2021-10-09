@@ -35,12 +35,14 @@
 .heading {
   font-size: 6rem;
   margin: 0;
+  padding: 0 10px;
 }
 
 .subheading {
   font-size: 1.3rem;
   margin: 0;
   margin-top: -1rem;
+  padding: 0 10px;
 }
 
 .section {
@@ -69,7 +71,7 @@
 
 @media (max-width: 900px) {
   .heading {
-    line-height: 5.5rem;
+    font-size: 3rem;
   }
   .subheading {
     margin-top: 1.5rem;

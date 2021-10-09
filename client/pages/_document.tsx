@@ -17,6 +17,11 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta charSet="UTF-8" />
+          <meta
+            name="keywords"
+            content="Twitter, Tweets, Activity Calendar, Tweets Graph"
+          />
           <meta name="twitter:card" content="summary" />
           <meta property="og:title" content="Tweets Calendar Graph" />
           <meta name="twitter:creator" content="@AskJere" />
@@ -26,7 +31,7 @@ class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://i.ibb.co/WgR1kKr/Screen-Shot-2021-10-07-at-21-19-29.png"
+            content="https://i.ibb.co/dPS6HSk/logo.png"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -41,6 +46,7 @@ class MyDocument extends Document {
           />
           <script async src="//static.getclicky.com/101336377.js" />
         </Head>
+
         <body>
           <Main />
           <NextScript />

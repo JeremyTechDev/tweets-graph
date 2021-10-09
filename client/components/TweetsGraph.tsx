@@ -48,7 +48,7 @@ const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
 
   return (
     <section className={styles.container} ref={graphRef}>
-      <h2>@{username}'s Tweets Calendar Graph</h2>
+      <h2 className={styles.title}>@{username}'s Tweets Calendar Graph</h2>
 
       <div className={styles.header}>
         <span>
@@ -59,12 +59,11 @@ const TweetsGraph: FC<Props> = ({ tweetsData, username }) => {
         </span>
 
         <a
-          href={`https://twitter.com/${username}?ref_src=twsrc%5Etfw`}
-          className="twitter-follow-button exclude-from-image"
-          data-show-count="false"
-          data-size="large"
+          className={`${styles['profile-link']} exclude-from-image`}
+          href={`https://twitter.com/${username}`}
+          target="_blank"
         >
-          Follow @{username}
+          @{username}
         </a>
       </div>
 

@@ -45,7 +45,7 @@ const Input: FC<Props> = ({ beforeText, afterText, defaultValue = '' }) => {
         {value}
       </span>
       <input
-        autoComplete='false'
+        autoComplete="new-password"
         className={styles.input}
         onChange={handleChange}
         onKeyPress={handleKeyPress}

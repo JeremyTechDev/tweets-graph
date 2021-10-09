@@ -20,3 +20,14 @@
 .highlighted {
   color: #08a0e9;
 }
+
+@media (max-width: 900px) {
+  .input__text {
+    font-size: 1rem;
+  }
+
+  .input {
+    font-size: 1rem;
+    border-width: 1px;
+  }
+}
