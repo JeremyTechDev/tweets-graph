@@ -44,7 +44,7 @@ class MyDocument extends Document {
             src="https://platform.twitter.com/widgets.js"
             charSet="utf-8"
           />
-          <script async src="//static.getclicky.com/101336377.js" />
+          <script async src="//static.getclicky.com/101336499.js" />
         </Head>
 
         <body>
