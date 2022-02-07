@@ -31,7 +31,7 @@ class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://i.ibb.co/dPS6HSk/logo.png"
+            content="https://i.ibb.co/2MKC8Rx/Screen-Shot-2022-02-07-at-10-57-41.png"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
